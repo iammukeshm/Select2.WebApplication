@@ -41,7 +41,14 @@
                 @Html.DisplayFor(modelItem => item.City)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Photo)
+                @if (item.Photo != null)
+                {
+                    <img id="profilePicture" style="width:50px;height:50px; object-fit:cover" src="data:image/*;base64,@(Convert.ToBase64String(item.Photo))">
+                }
+                else
+                {
+                    <img id="profilePicture" style="width:50px;height:50px; object-fit:cover" src="">
+                }
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

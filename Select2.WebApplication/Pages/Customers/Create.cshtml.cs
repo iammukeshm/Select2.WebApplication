@@ -19,6 +19,7 @@ namespace Select2.WebApplication.Pages.Customers
         public CreateModel(Select2.WebApplication.Data.ApplicationDbContext context)
         {
             _context = context;
+            Customer = new Customer();
         }
 
         public IActionResult OnGet()
