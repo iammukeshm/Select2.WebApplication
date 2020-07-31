@@ -23,11 +23,18 @@ namespace Select2.WebApplication.Controllers.API
         [Route("search")]
         public async Task<IActionResult> Search(string term)
         {
-            var states = await context.Customers.ToListAsync();
-            var data = states.Where(a => a.FirstName.Contains(term, StringComparison.OrdinalIgnoreCase) 
-            || a.LastName.Contains(term, StringComparison.OrdinalIgnoreCase)
-            || a.City.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList().AsReadOnly();
-            return Ok(data);
+            if(!string.IsNullOrEmpty(term))
+            {
+                var states = await context.Customers.ToListAsync();
+                var data = states.Where(a => a.FirstName.Contains(term, StringComparison.OrdinalIgnoreCase)
+                || a.LastName.Contains(term, StringComparison.OrdinalIgnoreCase)
+                || a.City.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList().AsReadOnly();
+                return Ok(data);
+            }
+            else
+            {
+                return Ok();
+            }
         }
     }
 }

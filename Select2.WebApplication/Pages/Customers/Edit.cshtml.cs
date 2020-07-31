@@ -49,16 +49,26 @@ namespace Select2.WebApplication.Pages.Customers
             {
                 return Page();
             }
-
-            _context.Attach(Customer).State = EntityState.Modified;
-            IFormFile file = Request.Form.Files.FirstOrDefault();
-            using (var dataStream = new MemoryStream())
-            {
-                await file.CopyToAsync(dataStream);
-                Customer.Photo = dataStream.ToArray();
-            }
             try
             {
+                if (Request.Form.Files.Count > 0)
+                {
+
+                    IFormFile file = Request.Form.Files.FirstOrDefault();
+                    if (file != null)
+                    {
+                        using (var dataStream = new MemoryStream())
+                        {
+                            await file.CopyToAsync(dataStream);
+                            Customer.Photo = dataStream.ToArray();
+                        }
+                    }
+                }
+                else
+                {
+                    Customer.Photo = await _context.Customers.Where(a => a.Id == Customer.Id).Select(a => a.Photo).FirstOrDefaultAsync();
+                }
+                _context.Update(Customer);
                 await _context.SaveChangesAsync();
             }
             catch (DbUpdateConcurrencyException)

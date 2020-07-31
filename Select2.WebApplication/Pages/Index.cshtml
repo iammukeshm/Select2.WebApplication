@@ -3,8 +3,43 @@
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
+<!-- select2-bootstrap4-theme -->
+<link href="https://raw.githack.com/ttskch/select2-bootstrap4-theme/master/dist/select2-bootstrap4.css" rel="stylesheet">
+<div class="text-center" style="padding:20px">
+    <h1 class="display-4">Let's Learn Select2!</h1>
+    <p>View more <a href="https://www.codewithmukesh.com/"> More Awesome Tutorials on ASP.NET Core</a>.</p>
 </div>
+
+<div class="form-group">
+    <label>Example of a Simple Static Select</label>
+    <select name="simpleSelect2" class="form-control" id="simpleSelect2">
+        <option data-select2-id="27">1</option>
+        <option data-select2-id="28">2</option>
+        <option data-select2-id="29">3</option>
+        <option data-select2-id="30">4</option>
+        <option data-select2-id="31">5</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Example of AJAX Select</label>
+    <select name="ajaxSelect2" class="form-control" id="ajaxSelect2">
+    </select>
+</div>
+<div class="form-group">
+    <label>Example of AJAX Multi Select</label>
+    <select name="ajaxMultiSelect2" class="form-control" id="ajaxMultiSelect2" multiple>
+    </select>
+</div>
+
+<div class="form-group">
+    <label>Example of AJAX Select with Custom HTML</label>
+    <select name="ajaxMultiSelect2HTML" class="form-control" id="ajaxMultiSelect2HTML">
+    </select>
+</div>
+@section Scripts
+{
+    <script src="~/lib/select2/js/select2.full.min.js"></script>
+    <script src="~/js/select2.js"></script>
+}
