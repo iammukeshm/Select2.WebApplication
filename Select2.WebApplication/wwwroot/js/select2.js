@@ -95,4 +95,11 @@ $("#ajaxMultiSelect2HTML").select2({
 
 function template(data) {
     return data.html;
-}
+};
+
+document.getElementById('submitButton').addEventListener('click', function () {
+    let result;
+    result = $("#ajaxMultiSelect2HTML").select2("data")[0];
+    var id = result.id;
+    alert("Select Id is " + id);
+});

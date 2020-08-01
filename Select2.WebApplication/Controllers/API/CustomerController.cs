@@ -23,7 +23,7 @@ namespace Select2.WebApplication.Controllers.API
         [Route("search")]
         public async Task<IActionResult> Search(string term)
         {
-            if(!string.IsNullOrEmpty(term))
+            if (!string.IsNullOrEmpty(term))
             {
                 var states = await context.Customers.ToListAsync();
                 var data = states.Where(a => a.FirstName.Contains(term, StringComparison.OrdinalIgnoreCase)
